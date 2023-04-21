@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/online-shopping-website/static/css/main.073c9b0a.css",
+    "main.js": "/online-shopping-website/static/js/main.dca02d9f.js",
+    "static/js/787.bc82c51c.chunk.js": "/online-shopping-website/static/js/787.bc82c51c.chunk.js",
+    "static/media/logo.svg": "/online-shopping-website/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/online-shopping-website/index.html",
+    "main.073c9b0a.css.map": "/online-shopping-website/static/css/main.073c9b0a.css.map",
+    "main.dca02d9f.js.map": "/online-shopping-website/static/js/main.dca02d9f.js.map",
+    "787.bc82c51c.chunk.js.map": "/online-shopping-website/static/js/787.bc82c51c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.dca02d9f.js"
+  ]
+}
