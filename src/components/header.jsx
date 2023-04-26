@@ -34,33 +34,28 @@ export function Header() {
   const navigate = useNavigate();
 
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
+ 
+
+ 
+
+  const handleOpenProductMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
  
-  const handleCloseNavMenu = (page) => {
-    setAnchorElNav(null);
-    if (page) {
-      navigate(page.path);
-    }
-  };
-
-
+ 
+  /*
 
   const navToPage = (page) =>{
     const currPage = (pages.find((p) => p.name === page));
     console.log(currPage)
     navigate(currPage.path);
-  }
-
-  const handleCloseUserMenu = () => {
+  }*/
+ 
+  //Want a way for the product page to be rendered with specific requirements
+  const handleCloseProductMenu = () => {
     setAnchorElUser(null);
   };
 
@@ -69,7 +64,7 @@ export function Header() {
         <Toolbar disableGutters>
           <Typography
             variant="h6"
-            onClick={() => navToPage("Home")}
+            onClick={() => navigate("/")}
             sx={{
               mr: 2,
               fontFamily: "monospace",
@@ -85,7 +80,7 @@ export function Header() {
 
 
           <Box sx={{flexGrow:1, textAlign: "center"}} >
-          <Button onClick={handleOpenUserMenu} sx={{ my: 2, color: "white", display: "block", fontSize:17, fontWeight:"bold"}}>
+          <Button onClick={handleOpenProductMenu} sx={{ my: 2, color: "white", display: "block", fontSize:17, fontWeight:"bold"}}>
                 Products
               </Button>
           <Menu
@@ -102,10 +97,10 @@ export function Header() {
                 horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={handleCloseProductMenu}
             >
               {productMenu.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={ () => {handleCloseProductMenu(); navigate("/products")}}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
@@ -114,13 +109,13 @@ export function Header() {
 
 
           <Button
-                onClick={() => navToPage("Orders")}
+                onClick={() => navigate("/orders")}
                 sx={{ my: 2, color: "white", display: "block", fontSize:17, fontWeight:"bold"}}
               >Past Orders</Button>
              
 
 <Box sx={{px:4}}>
-  <Avatar  onClick ={() => {navToPage("Cart")}} alt="loginLogo" src ={cartImage} sx={{ width: 56, height: 56}} />
+  <Avatar  onClick ={() => navigate("/cart")} alt="loginLogo" src ={cartImage} sx={{ width: 56, height: 56}} />
 </Box>
           
              
