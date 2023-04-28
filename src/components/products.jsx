@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ProductCard } from "./product card";
-import { Typography } from "@mui/material";
+import { Typography, Grid, Box } from "@mui/material";
 
 import { useEffect, useState } from "react"; 
 
@@ -16,7 +16,7 @@ export function Products(){
 
     function getProducts(){
             fetch(
-        "https://fakestoreapi.com/products/category/women's clothing"
+        "https://fakestoreapi.com/products"
       )
         .then((response) => response.json())
         .then((data) => {
@@ -38,16 +38,21 @@ export function Products(){
   
 
     return (
-        <>
+        <Box sx={{paddingBottom:15}}>
         <Typography gutterBottom variant="h3" component="div" sx={{fontWeight: "bold", textAlign:"center", marginBlock:5}}>
            Products 
         </Typography >
 
+      <Grid container spacing={6} justifyContent="flex-start" sx={{px: 30}}>
         {products.map((product) => (
-              
-                 <ProductCard product={product}></ProductCard>
+              <Grid item xs={3}>
+
+                  <ProductCard product={product}></ProductCard>
+                 </Grid>
             ))}
-        </>
+      </Grid>
+        
+        </Box>
     
     );
 }

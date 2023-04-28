@@ -60,7 +60,7 @@ export function Header() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -79,10 +79,14 @@ export function Header() {
           </Typography>
 
 
+
+{/*
           <Box sx={{flexGrow:1, textAlign: "center"}} >
           <Button onClick={handleOpenProductMenu} sx={{ my: 2, color: "white", display: "block", fontSize:17, fontWeight:"bold"}}>
                 Products
               </Button>
+          
+          
           <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -105,8 +109,16 @@ export function Header() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
 
+            
+          </Box>
+*/}
+<Box sx={{flexGrow:1, textAlign:"left"}}>
+
+          <Button onClick={() => navigate("/products")} sx={{  my: 2, color: "white", display: "block", fontSize:17, fontWeight:"bold"}}>
+                Products
+              </Button>
+</Box>
 
           <Button
                 onClick={() => navigate("/orders")}
