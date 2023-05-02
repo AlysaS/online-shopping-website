@@ -2,17 +2,19 @@ import * as React from "react";
 import { ProductCard } from "./product card";
 import { Typography, Grid, Box } from "@mui/material";
 
-import { useEffect, useState } from "react"; 
-
+import { useEffect, useState, useContext } from "react"; 
+import { ProductListContext } from "../state/productList/productList-context";
 
 
 
 
 export function Products(){
 
-    const [products, setProducts] = useState([]);
+    //const [products, setProducts] = useState([]);
+    const{ productListState} = useContext(ProductListContext);
 
 
+    /*
 
     function getProducts(){
             fetch(
@@ -31,11 +33,12 @@ export function Products(){
         });
     }
 
+
     useEffect(() => {
         getProducts();
       }, []);
 
-  
+  */
 
     return (
         <Box sx={{paddingBottom:15}}>
@@ -43,9 +46,9 @@ export function Products(){
            Products 
         </Typography >
 
-      <Grid container spacing={6} justifyContent="flex-start" sx={{px: 30}}>
-        {products.map((product) => (
-              <Grid item xs={3}>
+      <Grid container spacing={{xs:3, md:4}} columns={{xs:4, sm:8, md:12}} justifyContent="flex-start" sx={{px: 30}}>
+          {productListState.productList.map((product) => (
+              <Grid item xs={2} sm={4} md={4}>
 
                   <ProductCard product={product}></ProductCard>
                  </Grid>
