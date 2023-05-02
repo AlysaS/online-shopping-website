@@ -11,7 +11,7 @@ import { ProductListContext } from "../state/productList/productList-context";
 export function Products(){
 
     //const [products, setProducts] = useState([]);
-    const{ productListState} = useContext(ProductListContext);
+    const{ productListState, productLIstDispatch} = useContext(ProductListContext);
 
 
     /*
