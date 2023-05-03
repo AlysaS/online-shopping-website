@@ -18,7 +18,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-import cartImage from "../pictures/cartImage.png";
+import cartImage from "../../pictures/cartImage.png";
 
 const pages = [
   { name: "Home", path: "/" },

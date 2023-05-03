@@ -1,9 +1,9 @@
 import * as React from "react";
-import { ProductCard } from "./product card";
+import { ProductCard } from "./productCard";
 import { Typography, Grid, Box } from "@mui/material";
 
 import { useEffect, useState, useContext } from "react"; 
-import { ProductListContext } from "../state/productList/productList-context";
+import { ProductListContext } from "../../state/productList/productList-context";
 
 
 
