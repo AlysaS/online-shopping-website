@@ -46,7 +46,7 @@ function getProducts(){
 
         const productList = data;
 
-        productListDispatch({ type: "SET", payload: productList });
+        productListDispatch({ type: "SET", productList: productList });
       });
   }, []);
 

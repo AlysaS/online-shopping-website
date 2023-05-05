@@ -8,7 +8,15 @@ export const productListActions = {
 export const productListReducer = (state, action) => {
     switch(action.type){
         case productListActions.SET: {
-            return { productList: action.payload };
+            return { productList: action.productList };
+            
         }
+
+        /*
+        case productListActions.ADD_REVIEW:{
+            const edited = products.find(x => x.id == action.id)
+            edited.reviews = [...edited.reviews, action.review]
+            return { productList: [...product, editedProduct] };
+        }*/
     }
 }
