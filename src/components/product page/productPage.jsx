@@ -47,11 +47,12 @@ export function ProductPage(){
             maximumFractionDigits: 2,
           })} </Typography>
             {/**Want to have a view more option instead fo the scroll */}
-        <Typography  sx={{width:300, height:300, border:1, padding:2.5, overflow: "auto",}}>{product.description}</Typography>
+        <Typography  sx={{my:2, width:300, height:300, border:1, padding:2.5, overflow: "auto",}}>{product.description}</Typography>
 
-        <Select
+        {
+      (product.category === "men's clothing" || product.category === "women's clothing") > 0 && <Select
           defaultValue="Select Size"
-          sx={{my:2,mx:"auto", width: 200,alignItems: 'center',
+          sx={{mx:"auto", width: 200,alignItems: 'center',
           justifyContent: 'center'}}
         >
           <MenuItem value="Select Size">
@@ -63,7 +64,11 @@ export function ProductPage(){
           <MenuItem value={"xlarge"}>XLarge</MenuItem>
         </Select>
 
-        <Button variant="contained" sx={{width:250, mx:"auto"}}>Add To Cart</Button>
+}
+
+
+        
+        <Button variant="contained" sx={{width:250, mx:"auto", my:2}}>Add To Cart</Button>
 
         
         </Stack>
