@@ -11,31 +11,14 @@ import { productListReducer } from './state/productList/productList-reducer';
 
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { ProductPage } from './components/product page/productPage';
+import { cartReducer } from './state/cart/cart-reducer';
+import { CartContext } from './state/cart/cart-context';
 
 function App() {
 
-/*
- const [originalProductList, setOproductList] =useState([]); 
 
-function getProducts(){
-    fetch(
-"https://fakestoreapi.com/products"
-)
-.then((response) => response.json())
-.then((data) => {
-  console.log("Products: ");
-  console.log(data);
-
-//   const products = data.map(dataItem => dataItem.product)
-//   console.log("new pproduct")
-//   console.log(products)
-
-  setOproductList(data);
-});
-}
-
-*/
   const [productListState, productListDispatch] = useReducer(productListReducer, {productList: []}); 
+  const [cartState, cartDispatch] = useReducer(cartReducer, {cart: []});
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -56,6 +39,7 @@ function getProducts(){
       <Header />
         
       <ProductListContext.Provider value={{productListState, productListDispatch}}>
+      <CartContext.Provider value = {{cartState, cartDispatch}}>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/products" element={<Products/>} />
@@ -63,6 +47,8 @@ function getProducts(){
           <Route path="/cart" element={<Cart/>} />
           <Route path="/orders" element={<Orders/>} />
         </Routes>
+        
+      </CartContext.Provider>
       </ProductListContext.Provider>
         
     </HashRouter>

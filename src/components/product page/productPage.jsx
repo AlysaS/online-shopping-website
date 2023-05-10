@@ -1,17 +1,25 @@
-
+import { useContext } from "react"; 
 import { Button, Typography, Box, Rating, Stack, Select, MenuItem, InputLabel } from "@mui/material";
 import {useParams, useNavigate} from "react-router-dom";
 import { ProductListContext } from "../../state/productList/productList-context";
-import { useContext } from "react"; 
+import { CartContext } from "../../state/cart/cart-context";
+import { cartActions } from "../../state/cart/cart-reducer";
 
 export function ProductPage(){
 
     const {id} = useParams(); 
+    const {cartState, cartDispatch} = useContext(CartContext);
+    const{ productListState, productLIstDispatch} = useContext(ProductListContext);
+    const product = productListState.productList.find((x) => x.id == id);
+    
     const navigate = useNavigate();
 
-    const{ productListState, productLIstDispatch} = useContext(ProductListContext);
-
-    const product = productListState.productList.find((x) => x.id == id);
+    
+    const addToCart = (product) => {
+        cartDispatch({type: "ADD", product: product});
+        console.log("cart + "+ CartContext.cart);
+    }
+    
 
 
 
@@ -68,7 +76,8 @@ export function ProductPage(){
 
 
         
-        <Button variant="contained" sx={{width:250, mx:"auto", my:2}}>Add To Cart</Button>
+        <Button variant="contained" sx={{width:250, mx:"auto", my:2}}
+        onClick={addToCart(product)}>Add To Cart</Button>
 
         
         </Stack>
