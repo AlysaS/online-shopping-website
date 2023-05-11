@@ -1,4 +1,4 @@
-import { useContext } from "react"; 
+import { useContext, useState } from "react"; 
 import { Button, Typography, Box, Rating, Stack, Select, MenuItem, InputLabel } from "@mui/material";
 import {useParams, useNavigate} from "react-router-dom";
 import { ProductListContext } from "../../state/productList/productList-context";
@@ -12,15 +12,25 @@ export function ProductPage(){
     const{ productListState, productLIstDispatch} = useContext(ProductListContext);
     const product = productListState.productList.find((x) => x.id == id);
     
+    const [size, setSize] = useState("");
+
+
     const navigate = useNavigate();
 
     
-    const addToCart = (product) => {
-        cartDispatch({type: "ADD", product: product});
-        console.log("cart + "+ CartContext.cart);
+    const addToCart = (currProduct, size) => {
+        cartDispatch({type: "ADD", product: {currProduct, size}});
+
+
+        //cart.push(currProduct);
+        console.log("cart: ");
+        console.log(cartState.cart);
     }
     
 
+    const selectChange = (event) =>{
+      setSize(event.target.value);
+    }
 
 
     return(
@@ -58,10 +68,12 @@ export function ProductPage(){
         <Typography  sx={{my:2, width:300, height:300, border:1, padding:2.5, overflow: "auto",}}>{product.description}</Typography>
 
         {
-      (product.category === "men's clothing" || product.category === "women's clothing") > 0 && <Select
+      (product.category === "men's clothing" || product.category === "women's clothing") > 0 
+      && <Select
           defaultValue="Select Size"
           sx={{mx:"auto", width: 200,alignItems: 'center',
           justifyContent: 'center'}}
+          onChange ={selectChange}
         >
           <MenuItem value="Select Size">
             <em>Select Size</em>
@@ -76,8 +88,7 @@ export function ProductPage(){
 
 
         
-        <Button variant="contained" sx={{width:250, mx:"auto", my:2}}
-        onClick={addToCart(product)}>Add To Cart</Button>
+        <Button variant="contained" sx={{width:250, mx:"auto", my:2}} onClick={() => addToCart(product, size)}>Add To Cart</Button>
 
         
         </Stack>
