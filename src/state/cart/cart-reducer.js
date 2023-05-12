@@ -14,12 +14,16 @@ export const cartReducer = (state, action) => {
         }
 
         case cartActions.REMOVE:{
-            const editedCart = state.cart.filter(x => (x !== action.product));
+            const editedCart = state.cart.filter((x) => (x !== action.product));
             return {cart: editedCart}
         }
 
         case cartActions.SAVE_FOR_LATER:{
-            return {saveForLater: [...state.saveForLater , action.product]}
+            const editedCart = state.cart.filter((x) => (x !== action.product));
+            const editedSaveForLater = [...state.saveForLater , action.product];
+            return {saveForLater: editedSaveForLater, cart: editedCart}
+        
+            //return {saveForLater: [...state.saveForLater , action.product]}
         }
 
         case cartActions.REMOVE_SAVED:{

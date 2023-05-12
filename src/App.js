@@ -18,7 +18,7 @@ function App() {
 
 
   const [productListState, productListDispatch] = useReducer(productListReducer, {productList: []}); 
-  const [cartState, cartDispatch] = useReducer(cartReducer, {cart: []});
+  const [cartState, cartDispatch] = useReducer(cartReducer, {cart: [], saveForLater: []});
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")

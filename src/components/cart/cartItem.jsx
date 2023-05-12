@@ -15,11 +15,18 @@ export function CartItem(props){
     }
 
     const deleteCartItem = () => {
-        cartDispatch({type: cartActions.REMOVE, item: item})
+        cartDispatch({type: cartActions.REMOVE, product: item})
     
         console.log("deleted: ");
         console.log(cartState.cart)
     }
+
+    const saveForLater =() => {
+        console.log("saveforlater:  ");
+        console.log(cartState.saveForLater);
+        cartDispatch({type:cartActions.SAVE_FOR_LATER, product: item})
+        console.log(cartState.saveForLater);
+    }  
 
     return (
     <Card sx={{width:800, height:230, border:.05}}>
@@ -56,8 +63,8 @@ export function CartItem(props){
                 </ListItem>
 
                 <ListItem>
-                    <Button onClick ={() => deleteCartItem}>Delete</Button>
-                    <Button>Save for later</Button>
+                    <Button onClick ={() => deleteCartItem()}>Delete</Button>
+                    <Button onClick ={() => saveForLater()}>Save for later</Button>
                 </ListItem>
 
             </List>
