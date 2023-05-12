@@ -14,7 +14,7 @@ export const cartReducer = (state, action) => {
         }
 
         case cartActions.REMOVE:{
-            const editedCart = state.cart.filter(x => (x.id !== action.product.id));
+            const editedCart = state.cart.filter(x => (x !== action.product));
             return {cart: editedCart}
         }
 

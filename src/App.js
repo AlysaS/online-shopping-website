@@ -7,7 +7,7 @@ import {Products} from "./components/products/products";
 
 import { useReducer, useEffect, useState } from 'react';
 import { ProductListContext } from './state/productList/productList-context';
-import { productListReducer } from './state/productList/productList-reducer';
+import { productListActions, productListReducer } from './state/productList/productList-reducer';
 
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { ProductPage } from './components/product page/productPage';
@@ -29,10 +29,9 @@ function App() {
 
         const productList = data;
 
-        productListDispatch({ type: "SET", productList: productList });
+        productListDispatch({ type: productListActions.SET, productList: productList });
       });
   }, []);
-
 
   return (
     <HashRouter>

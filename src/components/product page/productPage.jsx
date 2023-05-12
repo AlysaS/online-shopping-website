@@ -19,10 +19,8 @@ export function ProductPage(){
 
     
     const addToCart = (currProduct, size) => {
-        cartDispatch({type: "ADD", product: {currProduct, size}});
+        cartDispatch({type: cartActions.ADD, product: size == "" ?currProduct : {...currProduct, size:size}});
 
-
-        //cart.push(currProduct);
         console.log("cart: ");
         console.log(cartState.cart);
     }
@@ -68,7 +66,7 @@ export function ProductPage(){
         <Typography  sx={{my:2, width:300, height:300, border:1, padding:2.5, overflow: "auto",}}>{product.description}</Typography>
 
         {
-      (product.category === "men's clothing" || product.category === "women's clothing") > 0 
+        (product.category === "men's clothing" || product.category === "women's clothing") > 0 
       && <Select
           defaultValue="Select Size"
           sx={{mx:"auto", width: 200,alignItems: 'center',

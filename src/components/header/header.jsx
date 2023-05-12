@@ -14,11 +14,13 @@ import {
   Toolbar,
   Box,
   AppBar,
+  Badge
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
 import cartImage from "../../pictures/cartImage.png";
+import { CartContext } from "../../state/cart/cart-context";
 
 const pages = [
   { name: "Home", path: "/" },
@@ -36,6 +38,7 @@ export function Header() {
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  const {cartState} = useContext(CartContext);
  
 
  
@@ -127,7 +130,11 @@ export function Header() {
              
 
 <Box sx={{px:4}}>
-  <Avatar  onClick ={() => navigate("/cart")} alt="loginLogo" src ={cartImage} sx={{ width: 56, height: 56}} />
+  {/* Badge # is hardcoded now but planning to make it match the number of items in the cart*/}
+  <Badge badgeContent={5} overlap="circular" sx={{ "& .MuiBadge-badge":{color:"white", backgroundColor:"black", width:5}}}>
+    <Avatar  onClick ={() => navigate("/cart")} alt="loginLogo" src ={cartImage} sx={{ width: 56, height: 56}} />
+  </Badge>
+  
 </Box>
           
              
