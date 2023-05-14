@@ -25,7 +25,7 @@ export function CartItem(props){
         console.log("saveforlater:  ");
         console.log(cartState.saveForLater);
         cartDispatch({type:cartActions.SAVE_FOR_LATER, product: item})
-        console.log(cartState.saveForLater);
+        console.log(cartState);
     }  
 
     return (

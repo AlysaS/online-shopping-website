@@ -39,7 +39,6 @@ export function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const {cartState} = useContext(CartContext);
- 
 
  
 

@@ -10,25 +10,23 @@ export const cartActions ={
 export const cartReducer = (state, action) => {
     switch(action.type){
         case cartActions.ADD:{
-            return {cart: [...state.cart , action.product]}
+            return {cart: [...state.cart , action.product], saveForLater: state.saveForLater}
         }
 
         case cartActions.REMOVE:{
             const editedCart = state.cart.filter((x) => (x !== action.product));
-            return {cart: editedCart}
+            return {cart: editedCart, saveForLater: state.saveForLater}
         }
 
         case cartActions.SAVE_FOR_LATER:{
             const editedCart = state.cart.filter((x) => (x !== action.product));
             const editedSaveForLater = [...state.saveForLater , action.product];
-            return {saveForLater: editedSaveForLater, cart: editedCart}
-        
-            //return {saveForLater: [...state.saveForLater , action.product]}
+            return {cart: editedCart, saveForLater: editedSaveForLater }
         }
 
         case cartActions.REMOVE_SAVED:{
-            const editedSaveFoLater = state.saveForLater.filter(x => (x.id !== action.product.id));
-            return {saveForLater: editedSaveFoLater}
+            const editedSaveForLater = state.saveForLater.filter(x => (x.id !== action.product.id));
+            return {cart : state.cart, saveForLater: editedSaveForLater}
         }
     }
 }
