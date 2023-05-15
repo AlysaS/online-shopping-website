@@ -1,7 +1,6 @@
 import './App.css';
 import {Header} from "./components/header/header";
 import {Cart} from "./components/cart/cart";
-import {Home} from "./components/home";
 import {Orders} from "./components/orders/orders";
 import {Products} from "./components/products/products";
 
@@ -40,8 +39,8 @@ function App() {
       <ProductListContext.Provider value={{productListState, productListDispatch}}>
       <CartContext.Provider value = {{cartState, cartDispatch}}>
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/products" element={<Products/>} />
+          <Route path= "/" element={<Products/>} />
+          <Route path= "/products" element={<Products/>} />
           <Route path="/products/:id" element={<ProductPage/>}/>
           <Route path="/cart" element={<Cart/>} />
           <Route path="/orders" element={<Orders/>} />

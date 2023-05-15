@@ -22,13 +22,6 @@ import { useContext } from "react";
 import cartImage from "../../pictures/cartImage.png";
 import { CartContext } from "../../state/cart/cart-context";
 
-const pages = [
-  { name: "Home", path: "/" },
-  { name: "Products", path: "/products" },
-  { name: "Cart", path: "/cart" },
-  {name: "Orders", path: "/orders"}
-];
-
 const productMenu = ["All Products", "Women", "Men"]
 
 
@@ -46,16 +39,6 @@ export function Header() {
     setAnchorElUser(event.currentTarget);
   };
 
- 
- 
-  /*
-
-  const navToPage = (page) =>{
-    const currPage = (pages.find((p) => p.name === page));
-    console.log(currPage)
-    navigate(currPage.path);
-  }*/
- 
   //Want a way for the product page to be rendered with specific requirements
   const handleCloseProductMenu = () => {
     setAnchorElUser(null);
@@ -66,7 +49,7 @@ export function Header() {
         <Toolbar disableGutters>
           <Typography
             variant="h6"
-            onClick={() => navigate("/")}
+            //onClick={() => navigate("/")}
             sx={{
               mr: 2,
               fontFamily: "monospace",
