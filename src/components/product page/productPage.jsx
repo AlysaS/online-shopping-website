@@ -23,6 +23,7 @@ export function ProductPage(){
 
         console.log("cart: ");
         console.log(cartState.cart);
+      
     }
     
 
@@ -70,11 +71,13 @@ export function ProductPage(){
       && <Select
           defaultValue="Select Size"
           sx={{mx:"auto", width: 200,alignItems: 'center',
-          justifyContent: 'center'}}
+          justifyContent: 'center',
+          }}
           onChange ={selectChange}
+          
         >
-          <MenuItem value="Select Size">
-            <em>Select Size</em>
+          <MenuItem disabled value="Select Size" sx={{fontWeight: "bold"}}>
+            Select Size
           </MenuItem>
           <MenuItem value={"small"}>Small</MenuItem>
           <MenuItem value={"medium"}>Medium</MenuItem>

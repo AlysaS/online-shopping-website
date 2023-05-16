@@ -6,12 +6,13 @@ import { cartActions } from "../../state/cart/cart-reducer";
 
 export function CartItem(props){
     const {item} = props;
-    const [qty, setQty] = useState(0);
     const {cartState, cartDispatch} = useContext(CartContext);
 
 
     const selectChange = (event) => {
-        setQty(event.target.value);
+        const qty = event.target.value; 
+        cartDispatch({type: cartActions.SET_QUANTITY, item: item, qty: qty})
+        
     }
 
     const deleteCartItem = () => {
@@ -50,6 +51,7 @@ export function CartItem(props){
                 <ListItem>
                     <Typography>Qty: </Typography>
                 <Select
+                    defaultValue={item.cartQty}
                     size="small"
                     sx={{mx:"auto", width: 75,alignItems: 'center',
                     justifyContent: 'center'}}
@@ -71,7 +73,7 @@ export function CartItem(props){
 
             </CardContent>
             <Typography variant ="h6" sx={{ textAlign: "center" }}>
-                    {(item.price * qty).toLocaleString("en-US", {
+                    {(item.price * item.cartQty).toLocaleString("en-US", {
                         style: "currency",
                         currency: "USD",
                         minimumFractionDigits: 2,

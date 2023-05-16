@@ -17,11 +17,11 @@ export const OrderItem = (props) => {
           
           {item.size != null && <Typography>size: {item.size}</Typography>}
 {/*<Typography>{item.title}</Typography>*/}
-          <Typography>Qty: {item.qty} </Typography>
+          <Typography>Qty: {item.cartQty} </Typography>
 
           <Typography variant="h6">
             Price:{" "}
-            {(item.price * item.qty).toLocaleString("en-US", {
+            {(item.price * item.cartQty).toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
               minimumFractionDigits: 2,

@@ -57,6 +57,11 @@ import { CartContext } from "../../state/cart/cart-context";
             })}
           </Typography>
 
+          {
+        (item.size != null
+      && 
+          <Typography sx={{textAlign:"center", fontSize:14, my:.5}}>Size: {item.size}</Typography>
+        )}
 
           <Button variant="contained" sx={{fontSize:11, width:110, height:22}}
           onClick={() => addToCart()}>Add to Cart</Button>
