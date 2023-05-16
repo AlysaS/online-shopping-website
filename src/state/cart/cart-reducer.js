@@ -3,6 +3,7 @@ import {cloneDeep} from "lodash";
 export const cartActions ={
     ADD: "ADD",
     REMOVE: "REMOVE",
+    CLEAR_CART: "CLEAR_CART",
     SAVE_FOR_LATER: "SAVE_FOR_LATER",
     REMOVE_SAVED: "REMOVE_SAVED",
 };
@@ -27,6 +28,10 @@ export const cartReducer = (state, action) => {
         case cartActions.REMOVE_SAVED:{
             const editedSaveForLater = state.saveForLater.filter(x => (x.id !== action.product.id));
             return {cart : state.cart, saveForLater: editedSaveForLater}
+        }
+
+        case cartActions.CLEAR_CART: {
+            return {cart: [], saveForLater: state.saveForLater}
         }
     }
 }

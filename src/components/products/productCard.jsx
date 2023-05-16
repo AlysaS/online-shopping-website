@@ -8,14 +8,23 @@ import {
   Rating,
   Box,
   Stack,
+  CardActionArea,
 } from "@mui/material";
 import * as React from "react";
+import { useNavigate } from "react-router";
 
 export const ProductCard = (props) => {
   const { product } = props;
 
+  const navigate = useNavigate();
+
+  const productClicked =(currProduct) => {
+    navigate(`/products/${currProduct.id}`)
+  }
+
   return (
     <Card sx={{ width: 285, height: 360, border: 0.5 }}>
+      <CardActionArea onClick={() => productClicked(product)} sx={{width: "100%", height: "100%"}}>
       <CardMedia
         sx={{ height: 190, objectFit: "contain", py: 1 }}
         component="img"
@@ -50,6 +59,8 @@ export const ProductCard = (props) => {
           })}
         </Typography>
       </CardContent>
+</CardActionArea>
+      
     </Card>
   );
 };

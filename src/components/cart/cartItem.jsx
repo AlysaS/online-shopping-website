@@ -46,10 +46,10 @@ export function CartItem(props){
                     <Typography>size: {item.size}</Typography>
                 </ListItem>
         )}
+                
                 <ListItem>
                     <Typography>Qty: </Typography>
                 <Select
-                    defaultValue="Select Size"
                     size="small"
                     sx={{mx:"auto", width: 75,alignItems: 'center',
                     justifyContent: 'center'}}
@@ -71,7 +71,7 @@ export function CartItem(props){
 
             </CardContent>
             <Typography variant ="h6" sx={{ textAlign: "center" }}>
-                    {item.price.toLocaleString("en-US", {
+                    {(item.price * qty).toLocaleString("en-US", {
                         style: "currency",
                         currency: "USD",
                         minimumFractionDigits: 2,

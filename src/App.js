@@ -12,12 +12,15 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { ProductPage } from './components/product page/productPage';
 import { cartReducer } from './state/cart/cart-reducer';
 import { CartContext } from './state/cart/cart-context';
+import { ordersReducer } from './state/orders/orders-reducer';
+import { OrdersContext } from './state/orders/orders-context';
 
 function App() {
 
 
   const [productListState, productListDispatch] = useReducer(productListReducer, {productList: []}); 
   const [cartState, cartDispatch] = useReducer(cartReducer, {cart: [], saveForLater: [], });
+  const [ordersState, ordersDispatch] = useReducer(ordersReducer, {orders:[]});
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -38,6 +41,7 @@ function App() {
         
       <ProductListContext.Provider value={{productListState, productListDispatch}}>
       <CartContext.Provider value = {{cartState, cartDispatch}}>
+      <OrdersContext.Provider value = {{ordersState, ordersDispatch}}>
         <Routes>
           <Route path= "/" element={<Products/>} />
           <Route path= "/products" element={<Products/>} />
@@ -45,7 +49,7 @@ function App() {
           <Route path="/cart" element={<Cart/>} />
           <Route path="/orders" element={<Orders/>} />
         </Routes>
-        
+      </OrdersContext.Provider>  
       </CartContext.Provider>
       </ProductListContext.Provider>
         

@@ -3,7 +3,7 @@ import { cloneDeep } from "lodash";
 export const productListActions = {
   ADD_REVIEW: "ADD_REVIEW",
   SET: "SET",
-  ADD_QUANTITY: "ADD_QUANTITY"
+  SET_QUANTITY: "SET_QUANTITY"
 };
 
 export const productListReducer = (state, action) => {
@@ -17,11 +17,19 @@ export const productListReducer = (state, action) => {
       return { productList: newProductList };
     }
 
+    case productListActions.SET_QUANTITY: {
+      let newProductList = cloneDeep(state.productList);
+      const editedProduct = newProductList.find((x) => x.id === action.product.id);
+      editedProduct.totalQty = action.qty;
+
+      return {productList: newProductList};
+    }
+
     /*
         case productListActions.ADD_REVIEW:{
             const edited = products.find(x => x.id == action.id)
             edited.reviews = [...edited.reviews, action.review]
             return { productList: [...product, editedProduct] };
-        }*/
-  }
+            */
+  }   
 };

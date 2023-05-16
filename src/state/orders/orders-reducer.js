@@ -5,7 +5,7 @@ export const ordersActions = {
 export const ordersReducer = (state, action) => {
     switch(action.type){
         case ordersActions.ADD: {
-            return {orders: [...state.orders, action.order]}
+            return {orders: [...state.orders, {orderItems: action.order, date: new Date()}]}
         }
     }
 }
