@@ -28,7 +28,7 @@ export function Products(){
            Products 
         </Typography >
 
-      <Grid container spacing={{xs:3, md:4}} columns={{xs:4, sm:8, md:12}} justifyContent="flex-start" sx={{px: 30}}>
+      <Grid container spacing={{xs:3, md:8}} columns={{xs:4, sm:8, md:12}} justifyContent="flex-start" sx={{px: 30}}>
           {productListState.productList.map((product) => (
               <Grid item xs={2} sm={4} md={4} >
                

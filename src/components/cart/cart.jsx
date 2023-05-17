@@ -49,7 +49,7 @@ export function Cart(){
         <Box>
         <List sx={{mx:"auto", alignItems:"center"}}>
             {cartState.cart.map((item) => (
-                <ListItem sx={{margin:"auto", alignItems:"center", width:900}}>
+                <ListItem sx={{margin:"auto", alignItems:"center", width:800}}>
                     <CartItem item={item}></CartItem>
                 </ListItem>
             ))}
@@ -78,17 +78,16 @@ export function Cart(){
 
 <Box id="saved for later">
          { cartState.saveForLater.length != 0 ? (
-        <Box>
-        
-
-        <List sx={{mx:"auto", alignItems:"center"}}>
+        <>
+    
+        <Grid container rowSpacing={5} justifyContent="flex-start" sx={{px:25}}>
             {cartState.saveForLater.map((item) => (
-                <ListItem sx={{margin:"auto", alignItems:"center", width:900}}>
+                <Grid item xs={12} sm={6} md={4}>
                     <SavedItem item={item}></SavedItem>
-                </ListItem>
+                </Grid>
             ))}
-        </List>
-       </Box>
+        </Grid>
+       </>
         
          ) : (
             <Card sx={{border:1, width:"50%", mx:"auto", py:5}}>

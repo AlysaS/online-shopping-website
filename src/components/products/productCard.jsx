@@ -37,7 +37,7 @@ export const ProductCard = (props) => {
           component="div"
           sx={{ fontWeight: "bold", textAlign: "center", fontSize: 18 }}
         >
-          {product.title}
+          {product.title.length > 70? `${product.title.substring(0, 60)}...` : product.title}
         </Typography>
 
         <Stack direction="row" spacing={1} sx={{ justifyContent: "center" }}>

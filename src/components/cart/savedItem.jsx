@@ -45,10 +45,10 @@ import { CartContext } from "../../state/cart/cart-context";
             component="div"
             sx={{ textAlign: "center", fontSize: 14, fontWeight: "bold" }}
           >
-            {item.title}
+            {item.title.length > 60 ? `${item.title.substring(0, 55)}...` : item.title}
           </Typography>
   
-          <Typography sx={{ textAlign: "center", fontSize: 14 }}>
+          <Typography sx={{ textAlign: "center", fontSize: 15, marginBottom:.5 }}>
             {item.price.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -60,7 +60,7 @@ import { CartContext } from "../../state/cart/cart-context";
           {
         (item.size != null
       && 
-          <Typography sx={{textAlign:"center", fontSize:14, my:.5}}>Size: {item.size}</Typography>
+          <Typography sx={{textAlign:"center", fontSize:14, marginBottom:.5}}>Size: {item.size}</Typography>
         )}
 
           <Button variant="contained" sx={{fontSize:11, width:110, height:22}}

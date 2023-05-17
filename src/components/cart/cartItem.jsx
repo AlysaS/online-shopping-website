@@ -31,30 +31,29 @@ export function CartItem(props){
 
     return (
     <Card sx={{width:800, height:230, border:.05}}>
-        <Stack direction="row">
+        <Stack direction="row" spacing={3}>
             <CardMedia  component="img" image={item.image} title="item image"
-            sx={{ height: 190, objectFit: "contain", py: 1 }}/>
-            <CardContent>
+            sx={{ height: 190,width:200, objectFit: "contain", py: 1, px:2}}/>
+            <CardContent sx={{py:.5}}>
                 <List>
                 <ListItem>
-                    <Typography>{item.title}</Typography>
+                    <Typography sx={{fontWeight:"bold", fontSize:18}}>{item.title}</Typography>
                 </ListItem>
 
                 {
         (item.size != null
       && 
                 <ListItem>
-                    <Typography>size: {item.size}</Typography>
+                    <Typography sx={{fontSize:17}}>size: {item.size}</Typography>
                 </ListItem>
         )}
                 
                 <ListItem>
-                    <Typography>Qty: </Typography>
+                    <Typography sx={{paddingRight:2}}>Qty: </Typography>
                 <Select
                     defaultValue={item.cartQty}
                     size="small"
-                    sx={{mx:"auto", width: 75,alignItems: 'center',
-                    justifyContent: 'center'}}
+                    sx={{ width: 75}}
                     onChange ={selectChange}
                  >
                         <MenuItem value={50}>50</MenuItem>
@@ -65,22 +64,24 @@ export function CartItem(props){
                 </ListItem>
 
                 <ListItem>
-                    <Button onClick ={() => deleteCartItem()}>Delete</Button>
-                    <Button onClick ={() => saveForLater()}>Save for later</Button>
+                    <Button variant="contained"  onClick ={() => deleteCartItem()} sx={{height:30}}>Delete</Button>
+                    <Button variant="contained" onClick ={() => saveForLater()}  sx={{mx:2, height:30}}>Save for later</Button>
                 </ListItem>
 
             </List>
 
+            
             </CardContent>
-            <Typography variant ="h6" sx={{ textAlign: "center" }}>
+            
+        </Stack>
+        
+        <Typography  sx={{ fontSize:18, fontWeight: "bold",position:"absolute", bottom:0, right:0 , margin:3, padding:.5,  border:.5}}>
                     {(item.price * item.cartQty).toLocaleString("en-US", {
                         style: "currency",
                         currency: "USD",
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
-          })} </Typography>
-        </Stack>
-        
-        
+                            })} 
+            </Typography>
     </Card>);
 }
