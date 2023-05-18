@@ -33,6 +33,8 @@ export function Header() {
 
   const {cartState} = useContext(CartContext);
 
+  const badgeCount = cartState.cart.length;
+
  
 
   const handleOpenProductMenu = (event) => {
@@ -113,7 +115,7 @@ export function Header() {
 
 <Box sx={{px:4}}>
   {/* Badge # is hardcoded now but planning to make it match the number of items in the cart*/}
-  <Badge badgeContent={5} overlap="circular" sx={{ "& .MuiBadge-badge":{color:"white", backgroundColor:"black", width:5}}}>
+  <Badge badgeContent={badgeCount} overlap="circular" sx={{ "& .MuiBadge-badge":{color:"white", backgroundColor:"black", width:5}}}>
     <Avatar  onClick ={() => navigate("/cart")} alt="loginLogo" src ={cartImage} sx={{ width: 56, height: 56}} />
   </Badge>
   

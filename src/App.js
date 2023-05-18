@@ -37,11 +37,14 @@ function App() {
 
   return (
     <HashRouter>
-      <Header />
+     
         
       <ProductListContext.Provider value={{productListState, productListDispatch}}>
       <CartContext.Provider value = {{cartState, cartDispatch}}>
       <OrdersContext.Provider value = {{ordersState, ordersDispatch}}>
+        
+         <Header />
+        
         <Routes>
           <Route path= "/" element={<Products/>} />
           <Route path= "/products" element={<Products/>} />

@@ -33,6 +33,15 @@ export function Cart(){
         navigate("/orders");
     }
 
+    const getTotalPrice = () => {
+        let totalPrice =0; 
+        cartState.cart.map((item) => {
+            totalPrice += (item.cartQty * item.price);
+        })
+
+        return totalPrice;
+    }
+
     
     return (
     <Box  sx={{paddingBottom:15}}>
@@ -55,7 +64,18 @@ export function Cart(){
             ))}
         </List>
 
-       <Box>Total Price: {/* Put total price here -- add up qty*price of each item*/ }</Box> 
+    <Box sx={{border:2,  height:50, width:300, textAlign:"center", display:"flex", mx:"auto"}}>
+        <Typography  sx={{ fontSize:25, fontWeight: "bold"}}>
+
+                   Total Price: {getTotalPrice().toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                            })} 
+        </Typography>
+
+       </Box> 
 
 
         <Button size="large" variant="contained" 
