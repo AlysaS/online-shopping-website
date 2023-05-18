@@ -10,9 +10,12 @@ import { ordersActions } from "../../state/orders/orders-reducer";
 import { cartActions } from "../../state/cart/cart-reducer";
 import emptyCartImage from "../../pictures/emptyCartImage.png";
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { ProductListContext } from "../../state/productList/productList-context";
+import { productListActions } from "../../state/productList/productList-reducer";
 
 export function Cart(){
     
+    const {productListDispatch} = useContext(ProductListContext)
     const {cartState, cartDispatch} = useContext(CartContext);
     const {ordersState, ordersDispatch} = useContext(OrdersContext);
    
@@ -24,6 +27,13 @@ export function Cart(){
     }
 
     const placeOrder = () => {
+
+        //go througn each item in cart and subtract the qty 
+        cartState.cart.map((item) => {
+            productListDispatch({type: productListActions.SET_QUANTITY, product:item, qty: (item.totalQty - item.cartQty)})
+        })
+
+        
         ordersDispatch({type: ordersActions.ADD, order: cartState.cart});
         cartDispatch({type: cartActions.CLEAR_CART});
 
@@ -63,6 +73,7 @@ export function Cart(){
                 </ListItem>
             ))}
         </List>
+        
 
     <Box sx={{border:2,  height:50, width:300, textAlign:"center", display:"flex", mx:"auto"}}>
         <Typography  sx={{ fontSize:25, fontWeight: "bold"}}>

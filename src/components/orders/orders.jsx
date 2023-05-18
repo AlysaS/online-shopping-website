@@ -43,7 +43,7 @@ export function Orders() {
   <Card sx={{border:1, width:"50%", mx:"auto", py:5}}>
             <Stack direction = "row" spacing={6} sx={{ display:"flex", justifyContent:"center", alignItems:"center" }}>
                 <Box component="img" src={noOrdersImage} alt="noOrdersImage" sx={{width:170}}/>
-                <Typography sx={{textAlign: "center", fontSize:30, fontWeight:"bold"}}>You did not place any orders</Typography>
+                <Typography sx={{textAlign: "center", fontSize:30, fontWeight:"bold"}}>You do not have any past orders</Typography>
             </Stack>
             </Card>
 )}

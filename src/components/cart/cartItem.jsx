@@ -74,6 +74,9 @@ export function CartItem(props){
             </CardContent>
             
         </Stack>
+
+{item.totalQty <= 100 &&(<Typography sx={{position:"absolute", bottom:50, right: 0 , py:11, paddingRight:10, fontSize:18, fontWeight:"bold"}}>Only {item.totalQty} left!</Typography>)}
+        
         
         <Typography  sx={{ fontSize:18, fontWeight: "bold",position:"absolute", bottom:0, right:0 , margin:3, padding:.5,  border:.5}}>
                     {(item.price * item.cartQty).toLocaleString("en-US", {
@@ -83,5 +86,6 @@ export function CartItem(props){
                         maximumFractionDigits: 2,
                             })} 
             </Typography>
+
     </Card>);
 }

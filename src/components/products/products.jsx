@@ -32,7 +32,7 @@ export function Products(){
           {productListState.productList.map((product) => (
               <Grid item xs={2} sm={4} md={4} >
                
-                <ProductCard product={product} ></ProductCard>
+                <ProductCard product={product}  ></ProductCard>
                 
               </Grid>
             ))}

@@ -16,17 +16,28 @@ import { useNavigate } from "react-router";
 export const ProductCard = (props) => {
   const { product } = props;
 
+
   const navigate = useNavigate();
 
-  const productClicked =(currProduct) => {
-    navigate(`/products/${currProduct.id}`)
+  const productClicked =() => {
+    if(product.totalQty> 0){
+      navigate(`/products/${product.id}`)
+    }
+
+    
   }
 
   return (
-    <Card sx={{ width: 285, height: 360, border: 0.5 }}>
-      <CardActionArea onClick={() => productClicked(product)} sx={{width: "100%", height: "100%"}}>
+    
+    <Card sx={{ width: 285, height: 360, border: 0.5, backgroundColor: product.totalQty <= 0 ? 'grey' : 'inherit',
+    opacity: product.totalQty <= 0 ? 0.3 : 1, }}>
+      <CardActionArea disableRipple  onClick={() => productClicked()} sx={{width: "100%", height: "100%"}}>
+
+      {/*product.totalQty <= 0 && (
+      <Box sx={{backgroundColor:"grey",height:20, width:50}} >Sold Out</Box>
+      )*/}
       <CardMedia
-        sx={{ height: 190, objectFit: "contain", py: 1 }}
+        sx={{ height: 190, objectFit: "contain", py: 1, backgroundColor:"white" }}
         component="img"
         image={product.image}
         title="product image"
@@ -60,7 +71,9 @@ export const ProductCard = (props) => {
         </Typography>
       </CardContent>
 </CardActionArea>
-      
+     
     </Card>
+
+    
   );
 };
