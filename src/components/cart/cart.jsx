@@ -12,6 +12,8 @@ import emptyCartImage from "../../pictures/emptyCartImage.png";
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { ProductListContext } from "../../state/productList/productList-context";
 import { productListActions } from "../../state/productList/productList-reducer";
+import savedImage from "../../pictures/savedImage.png";
+import emptyCartImage2 from "../../pictures/emptyCartImage2.png";
 
 export function Cart(){
     
@@ -111,7 +113,7 @@ export function Cart(){
         ) : (
             <Card sx={{border:1, width:"50%", mx:"auto", py:5}}>
             <Stack direction = "row" spacing={6} sx={{ display:"flex", justifyContent:"center", alignItems:"center" }}>
-                <Box component="img" src={emptyCartImage} alt="emptyCartImage" sx={{width:170}}/>
+                <Box component="img" src={emptyCartImage2} alt="emptyCartImage" sx={{width:180}}/>
                 <Typography sx={{textAlign: "center", fontSize:30, fontWeight:"bold"}}>Your cart is empty</Typography>
             </Stack>
             </Card>
@@ -138,7 +140,7 @@ export function Cart(){
          ) : (
             <Card sx={{border:1, width:"50%", mx:"auto", py:5}}>
             <Stack direction = "row" spacing={6} sx={{ display:"flex", justifyContent:"center", alignItems:"center" }}>
-                <StarBorderOutlinedIcon fontSize="large"/>
+                <Box component="img" src={savedImage} alt="starImage" sx={{width:70}}/>
                 <Typography sx={{textAlign: "center", fontSize:30, fontWeight:"bold"}}>You do not have any saved items</Typography>
             </Stack>
             </Card>
