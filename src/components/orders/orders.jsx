@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Typography, Box , Card, Stack} from "@mui/material";
+import { Typography, Box , Card, Stack, Grid} from "@mui/material";
 import { useContext } from "react";
 import { OrdersContext } from "../../state/orders/orders-context";
 import { OrderItem } from "./orderItem";
@@ -28,15 +28,22 @@ export function Orders() {
     {ordersState.orders.length !=0 ? (
     <Box>
     {reversedOrders.map((order) => 
-        <Card sx={{border:1,width:"60%", my:2, mx:"auto"}}>
+        <Card sx={{border:1,width:"55%", my:2, mx:"auto"}}>
           <Box sx={{backgroundColor:"lightgrey", fontWeight:"bold", fontSize:20,padding:2}}>
             Order Placed: {order.date.getMonth()}/{order.date.getDate()}/{order.date.getFullYear()}  
           </Box>
+          <Box sx={{overflowX: 'auto',
+        padding: '10px', height:400}}>
+          <Grid container spacing={2} justifyContent="space-evenly" wra="nowrap" >
             {order.orderItems.map( (item) => 
             
-            <OrderItem item ={item} />
+            <Grid item key={item.id}>
+                <OrderItem item ={item} />
+            </Grid>
+            
             
             )}
+            </Grid></Box>
         </Card> 
     )}</Box>
 ): (

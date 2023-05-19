@@ -17,7 +17,7 @@ export const OrderItem = (props) => {
 
           <Typography sx={{fontWeight:"bold"}}>{item.title.length > 40? `${item.title.substring(0, 35)}...` : item.title}</Typography>
           
-          {item.size != null && <Typography>size: {item.size}</Typography>}
+          {item.size != "" && <Typography>size: {item.size}</Typography>}
 {/*<Typography>{item.title}</Typography>*/}
           <Typography>Qty: {item.cartQty} </Typography>
 

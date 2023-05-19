@@ -41,7 +41,7 @@ export function CartItem(props){
                 </ListItem>
 
                 {
-        (item.size != null
+        (item.size != ""
       && 
                 <ListItem>
                     <Typography sx={{fontSize:17}}>size: {item.size}</Typography>
@@ -56,11 +56,11 @@ export function CartItem(props){
                     sx={{ width: 75}}
                     onChange ={selectChange}
                  >
-                <MenuItem value={1} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 1): false }>1</MenuItem>
-              <MenuItem value={2} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 2): false }>2</MenuItem>
-              <MenuItem value={3} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 3): false }>3</MenuItem>
-              <MenuItem value={4} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 4): false }>4</MenuItem>
-              <MenuItem value={5} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 5): false }>5</MenuItem>
+                <MenuItem value={1} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 1): (item.totalQty < 1) }>1</MenuItem>
+              <MenuItem value={2} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 2): (item.totalQty < 2) }>2</MenuItem>
+              <MenuItem value={3} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 3): (item.totalQty < 3) }>3</MenuItem>
+              <MenuItem value={4} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 4): (item.totalQty < 4) }>4</MenuItem>
+              <MenuItem value={5} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 5): (item.totalQty < 5) }>5</MenuItem>
               
                 </Select>
                 </ListItem>
@@ -76,6 +76,13 @@ export function CartItem(props){
             </CardContent>
             
         </Stack>
+{
+    item.sizes != null ? (
+        item.sizes.find(x => x.name === item.size).amount < 6 &&(<Typography sx={{position:"absolute", bottom:50, right: 0 , py:11, paddingRight:9, fontSize:18, fontWeight:"bold"}}>Only {item.sizes.find(x => x.name === item.size).amount} left!</Typography>)
+
+    ) :
+    (item.totalQty < 6 &&(<Typography sx={{position:"absolute", bottom:50, right: 0 , py:11, paddingRight:9, fontSize:18, fontWeight:"bold"}}>Only {item.totalQty} left!</Typography>))
+}
 
 {item.totalQty < 6 &&(<Typography sx={{position:"absolute", bottom:50, right: 0 , py:11, paddingRight:9, fontSize:18, fontWeight:"bold"}}>Only {item.totalQty} left!</Typography>)}
         

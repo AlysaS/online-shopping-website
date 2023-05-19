@@ -58,7 +58,7 @@ import { CartContext } from "../../state/cart/cart-context";
           </Typography>
 
           {
-        (item.size != null
+        (item.size != ""
       && 
           <Typography sx={{textAlign:"center", fontSize:14, marginBottom:.5}}>Size: {item.size}</Typography>
         )}

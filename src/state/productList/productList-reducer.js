@@ -25,8 +25,13 @@ export const productListReducer = (state, action) => {
     case productListActions.SET_AMOUNT: {
       let newProductList = cloneDeep(state.productList);
       const editedProduct = newProductList.find((x) => x.id === action.product.id);
-      const editedSize = editedProduct.sizes.find((x) => x.name == action.product.size);
-      editedSize.amount = action.amount;
+      if(editedProduct.sizes != null){
+        const editedSize = editedProduct.sizes.find((x) => x.name == action.product.size);
+        editedSize.amount = action.amount;
+      }else{
+        editedProduct.totalQty = action.amount;
+      }
+      
 
       return {productList: newProductList};
     }
