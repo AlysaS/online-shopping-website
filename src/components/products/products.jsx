@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Products(){
 
-    const{ productListState, productLIstDispatch} = useContext(ProductListContext);
+    const{ productListState, productListDispatch} = useContext(ProductListContext);
 
 
   

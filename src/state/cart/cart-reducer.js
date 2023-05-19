@@ -12,7 +12,7 @@ export const cartActions ={
 export const cartReducer = (state, action) => {
     switch(action.type){
         case cartActions.ADD:{
-            return {cart: [...state.cart , {...action.product, cartQty: 1} ], saveForLater: state.saveForLater}
+            return {cart: [...state.cart , {...action.product, cartQty: action.qty,} ], saveForLater: state.saveForLater}
         }
 
         case cartActions.REMOVE:{

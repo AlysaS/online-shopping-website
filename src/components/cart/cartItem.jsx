@@ -51,16 +51,17 @@ export function CartItem(props){
                 <ListItem>
                     <Typography sx={{paddingRight:2}}>Qty: </Typography>
                 <Select
-                    defaultValue={item.cartQty}
+                    defaultValue={item.cartQty} 
                     size="small"
                     sx={{ width: 75}}
                     onChange ={selectChange}
                  >
-                        <MenuItem value={1}>1</MenuItem>
-                        <MenuItem value={2}>2</MenuItem>
-                        <MenuItem value={3}>3</MenuItem>
-                        <MenuItem value={4}>4</MenuItem>
-                        <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={1} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 1): false }>1</MenuItem>
+              <MenuItem value={2} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 2): false }>2</MenuItem>
+              <MenuItem value={3} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 3): false }>3</MenuItem>
+              <MenuItem value={4} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 4): false }>4</MenuItem>
+              <MenuItem value={5} disabled={item.sizes != null ? (item.sizes.find(x => x.name === item.size).amount < 5): false }>5</MenuItem>
+              
                 </Select>
                 </ListItem>
 

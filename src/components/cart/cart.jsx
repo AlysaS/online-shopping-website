@@ -30,7 +30,7 @@ export function Cart(){
 
         //go througn each item in cart and subtract the qty 
         cartState.cart.map((item) => {
-            productListDispatch({type: productListActions.SET_QUANTITY, product:item, qty: (item.totalQty - item.cartQty)})
+            productListDispatch({type: productListActions.SET_AMOUNT, product: item, amount: getAmount(item)})
         })
 
         
@@ -41,6 +41,21 @@ export function Cart(){
         console.log(ordersState.orders);
 
         navigate("/orders");
+    }
+
+    const getAmount = (item) => {
+        console.log(item);
+
+        if (item.sizes != null){
+            const size = item.sizes.find((x) => x.name == item.size);
+            console.log(size);
+            const amnt = size.amount;
+            return (amnt- item.cartQty); 
+        }else{
+            return (item.totalQty - item.cartQty)
+        }
+
+        
     }
 
     const getTotalPrice = () => {

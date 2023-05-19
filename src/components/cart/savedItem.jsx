@@ -21,7 +21,7 @@ import { CartContext } from "../../state/cart/cart-context";
 
     const addToCart = () => {
         
-        cartDispatch({type: cartActions.ADD, product:item});
+        cartDispatch({type: cartActions.ADD, product:item, qty: item.cartQty});
         cartDispatch({type: cartActions.REMOVE_SAVED, product: item});
     }
 

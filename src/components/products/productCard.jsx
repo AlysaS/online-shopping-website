@@ -20,9 +20,9 @@ export const ProductCard = (props) => {
   const navigate = useNavigate();
 
   const productClicked =() => {
-    if(product.totalQty> 0){
+    
       navigate(`/products/${product.id}`)
-    }
+    
 
     
   }
