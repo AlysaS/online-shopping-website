@@ -34,18 +34,10 @@ export function ProductPage(){
 
     return(
         <Box  sx={{marginBottom:5}}>
-        <Box sx={{margin:2}}>
-            <Button onClick={() => navigate("/products") } variant= "outlined" >Back to all products </Button>
-        </Box>
         
-        <Stack direction="row" justifyContent="space-evenly" alignItems="center" spacing={2} >
-           < Box component="img" src={product.image} sx={{width:300, height:440, objectFit: "contain", paddingLeft:20}}/>
-        
-        <Stack>
+        <Typography variant="h4" sx={{fontWeight:"bold", width:"75%", textAlign:"center", margin:"auto", paddingTop:5, paddingBottom:2}}>{product.title}</Typography>
 
-        <Typography variant="h5" sx={{fontWeight:"bold", width:350, textAlign:"center"}}>{product.title}</Typography>
-        
-        <Stack direction="row" spacing={1} sx={{ justifyContent: "center" }}>
+<Stack direction="row" spacing={1} sx={{ justifyContent: "center" }}>
           <Rating
             name="simple-controlled"
             value={product.rating.rate}
@@ -55,17 +47,28 @@ export function ProductPage(){
           />
           <Typography>({product.rating.count})</Typography>
         </Stack>
+
+        <Stack direction="row" justifyContent="space-evenly" alignItems="center" spacing={2} >
+           < Box component="img" src={product.image} sx={{width:300, height:440, objectFit: "contain", paddingLeft:20}}/>
         
-        <Typography variant ="h6" sx={{ textAlign: "center" }}>
+        <Stack>
+
+        
+       
+            {/**Want to have a view more option instead fo the scroll */}
+        <Typography  sx={{my:2, width:300, height:300, border:1, padding:2.5, overflow: "auto",}}>{product.description}</Typography>
+
+        
+        <Typography variant ="h6" sx={{ textAlign: "center", padding:2 }}>
           {product.price.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
           })} </Typography>
-            {/**Want to have a view more option instead fo the scroll */}
-        <Typography  sx={{my:2, width:300, height:300, border:1, padding:2.5, overflow: "auto",}}>{product.description}</Typography>
 
+        
+        
         {
         (product.category === "men's clothing" || product.category === "women's clothing") > 0 
       && <Select
@@ -87,9 +90,17 @@ export function ProductPage(){
 
 }
 
+<Typography variant ="h6" sx={{ textAlign: "center", padding:2 }}>
+          {product.price.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })} </Typography>
+
 
         
-        <Button variant="contained" sx={{width:250, mx:"auto", my:2}} onClick={() => addToCart(product, size)}>Add To Cart</Button>
+        <Button variant="contained" sx={{width:250, mx:"auto", my:2}} disabled={size == ""} onClick={() => addToCart(product, size)}>Add To Cart</Button>
 
         
         </Stack>

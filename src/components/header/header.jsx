@@ -62,7 +62,7 @@ export function Header() {
               px: 3
             }}
           >
-            Buy In Bulk
+            QuickBuy
           </Typography>
 
 

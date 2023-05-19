@@ -56,10 +56,11 @@ export function CartItem(props){
                     sx={{ width: 75}}
                     onChange ={selectChange}
                  >
-                        <MenuItem value={50}>50</MenuItem>
-                        <MenuItem value={100}>100</MenuItem>
-                        <MenuItem value={150}>150</MenuItem>
-                        <MenuItem value={200}>200</MenuItem>
+                        <MenuItem value={1}>1</MenuItem>
+                        <MenuItem value={2}>2</MenuItem>
+                        <MenuItem value={3}>3</MenuItem>
+                        <MenuItem value={4}>4</MenuItem>
+                        <MenuItem value={5}>5</MenuItem>
                 </Select>
                 </ListItem>
 
@@ -75,7 +76,7 @@ export function CartItem(props){
             
         </Stack>
 
-{item.totalQty <= 100 &&(<Typography sx={{position:"absolute", bottom:50, right: 0 , py:11, paddingRight:10, fontSize:18, fontWeight:"bold"}}>Only {item.totalQty} left!</Typography>)}
+{item.totalQty < 6 &&(<Typography sx={{position:"absolute", bottom:50, right: 0 , py:11, paddingRight:9, fontSize:18, fontWeight:"bold"}}>Only {item.totalQty} left!</Typography>)}
         
         
         <Typography  sx={{ fontSize:18, fontWeight: "bold",position:"absolute", bottom:0, right:0 , margin:3, padding:.5,  border:.5}}>

@@ -11,7 +11,7 @@ export const productListReducer = (state, action) => {
     case productListActions.SET: {
       
       const newProductList = action.productList.map(product => {
-        return {...product, totalQty: 200}; //add a default amount of 200 items to each product
+        return {...product, totalQty: 10}; //add a default amount of 10 items to each product
       });
       
       return { productList: newProductList };
