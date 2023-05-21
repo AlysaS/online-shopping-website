@@ -51,23 +51,12 @@ export function ProductPage() {
   };
 
   const inCart = () => {
-    //const sameItems=  cartState.cart.filter(
-     /// x => x.id == product.id ); 
-
        return cartState.cart.find(
         (x => 
           x.id == product.id && 
           (x.sizes != null ? x.size === size  : true )
           )) ;
 
-         //const same = sameItems.find(x => x.sizes?.find(x => x.name == size));
-         
-        // if(same != null){
-        //  return true;
-        // }
-
-      return false;
-     
 
   }
 
@@ -93,7 +82,6 @@ export function ProductPage() {
           value={product.rating.rate}
           size="medium"
           readOnly
-          /** onChange={(event, newValue) => {setValue(newValue)}*/
         />
         <Typography>({product.rating.count})</Typography>
       </Stack>
@@ -116,7 +104,6 @@ export function ProductPage() {
         />
 
         <Stack>
-          {/**Want to have a view more option instead fo the scroll */}
           <Card sx={{ border: 1, width: 450, height: 230, paddingBottom: 3 }}>
             <CardContent>
               <Typography sx={{ padding: 1, fontWeight: "bold", fontSize: 18 }}>

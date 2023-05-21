@@ -36,9 +36,6 @@ export const ProductCard = (props) => {
     opacity: product.totalQty <= 0 ? 0.3 : 1, }}>
       <CardActionArea disableRipple  onClick={() => productClicked()} sx={{width: "100%", height: "100%"}}>
 
-      {/*product.totalQty <= 0 && (
-      <Box sx={{backgroundColor:"grey",height:20, width:50}} >Sold Out</Box>
-      )*/}
       <CardMedia
         sx={{ height: 190, objectFit: "contain", py: 1, backgroundColor:"white" }}
         component="img"
@@ -60,7 +57,6 @@ export const ProductCard = (props) => {
             value={product.rating.rate}
             size="small"
             readOnly
-            /** onChange={(event, newValue) => {setValue(newValue)}*/
           />
           <Typography>({product.rating.count})</Typography>
         </Stack>

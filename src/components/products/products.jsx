@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ProductCard } from "./productCard";
-import { Typography, Grid, Box, Button } from "@mui/material";
+import { Typography, Grid, Box,} from "@mui/material";
 
 import { useContext } from "react"; 
 import { ProductListContext } from "../../state/productList/productList-context";
@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Products(){
 
-    const{ productListState, productListDispatch} = useContext(ProductListContext);
+    const{ productListState, } = useContext(ProductListContext);
 
 
   
@@ -18,9 +18,6 @@ export function Products(){
 
       const navigate = useNavigate();
 
-      const productClicked =(currProduct) => {
-        navigate(`/products/${currProduct.id}`)
-      }
 
     return (
         <Box sx={{paddingBottom:15}}>
