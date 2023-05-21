@@ -22,8 +22,8 @@ export function Header() {
   const navigate = useNavigate();
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const {cartState} = useContext(cartState);
+  
+  const {cartState} = useContext(CartContext);
   const badgeCount = cartState.cart.length;
 
   const handleOpenProductMenu = (event) => {
