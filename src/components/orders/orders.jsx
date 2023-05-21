@@ -28,13 +28,13 @@ export function Orders() {
     {ordersState.orders.length !=0 ? (
     <Box>
     {reversedOrders.map((order) => 
-        <Card sx={{border:1,width:"55%", my:2, mx:"auto"}}>
-          <Box sx={{backgroundColor:"lightgrey", fontWeight:"bold", fontSize:20,padding:2}}>
+        <Card sx={{border:1,width:"60%",  my:4, mx:"auto"}}>
+          <Box sx={{backgroundColor:"lightgrey", fontWeight:"bold", fontSize:20,padding:2, }}>
             Order Placed: {order.date.getMonth()}/{order.date.getDate()}/{order.date.getFullYear()}  
           </Box>
           <Box sx={{overflowX: 'auto',
-        padding: '10px', height:400}}>
-          <Grid container spacing={2} justifyContent="space-evenly" wra="nowrap" >
+        padding: '10px', height:250}}>
+          <Grid container spacing={2} justifyContent="flex-start" wrap="nowrap" alignItems="center">
             {order.orderItems.map( (item) => 
             
             <Grid item key={item.id}>

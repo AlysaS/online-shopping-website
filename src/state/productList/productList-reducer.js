@@ -1,7 +1,6 @@
 import { cloneDeep } from "lodash";
 
 export const productListActions = {
-  ADD_REVIEW: "ADD_REVIEW",
   SET: "SET",
   SET_AMOUNT: "SET_AMOUNT"
 };
@@ -36,11 +35,6 @@ export const productListReducer = (state, action) => {
       return {productList: newProductList};
     }
 
-    /*
-        case productListActions.ADD_REVIEW:{
-            const edited = products.find(x => x.id == action.id)
-            edited.reviews = [...edited.reviews, action.review]
-            return { productList: [...product, editedProduct] };
-            */
+   
   }   
 };

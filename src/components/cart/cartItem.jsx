@@ -11,7 +11,7 @@ export function CartItem(props){
 
     const selectChange = (event) => {
         const qty = event.target.value; 
-        cartDispatch({type: cartActions.SET_QUANTITY, item: item, qty: qty})
+        cartDispatch({type: cartActions.SET_QUANTITY, product: item, qty: qty})
         
     }
 

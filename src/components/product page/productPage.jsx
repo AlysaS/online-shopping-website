@@ -50,6 +50,27 @@ export function ProductPage() {
     setQty(event.target.value);
   };
 
+  const inCart = () => {
+    //const sameItems=  cartState.cart.filter(
+     /// x => x.id == product.id ); 
+
+       return cartState.cart.find(
+        (x => 
+          x.id == product.id && 
+          (x.sizes != null ? x.size === size  : true )
+          )) ;
+
+         //const same = sameItems.find(x => x.sizes?.find(x => x.name == size));
+         
+        // if(same != null){
+        //  return true;
+        // }
+
+      return false;
+     
+
+  }
+
   return (
     <Box sx={{ marginBottom: 5 }}>
       <Typography
@@ -183,11 +204,11 @@ export function ProductPage() {
               sx={{ width: 75 }}
               onChange={qtySelectChange}
             >
-              <MenuItem value={1} disabled={(product.sizes != null && size !="")? (product.sizes.find(x => x.name === size).amount < 1): false }>1</MenuItem>
-              <MenuItem value={2} disabled={(product.sizes != null && size !="") ? (product.sizes.find(x => x.name === size).amount < 2): false }>2</MenuItem>
-              <MenuItem value={3} disabled={(product.sizes != null && size !="")? (product.sizes.find(x => x.name === size).amount < 3): false }>3</MenuItem>
-              <MenuItem value={4} disabled={(product.sizes != null && size !="") ? (product.sizes.find(x => x.name === size).amount < 4): false }>4</MenuItem>
-              <MenuItem value={5} disabled={(product.sizes != null && size !="") ? (product.sizes.find(x => x.name === size).amount < 5): false }>5</MenuItem>
+              <MenuItem value={1} disabled={(product.sizes != null && size !="")? (product.sizes.find(x => x.name === size).amount < 1): (product.totalQty < 1 ) }>1</MenuItem>
+              <MenuItem value={2} disabled={(product.sizes != null && size !="") ? (product.sizes.find(x => x.name === size).amount < 2): (product.totalQty < 2 ) }>2</MenuItem>
+              <MenuItem value={3} disabled={(product.sizes != null && size !="")? (product.sizes.find(x => x.name === size).amount < 3): (product.totalQty < 3 ) }>3</MenuItem>
+              <MenuItem value={4} disabled={(product.sizes != null && size !="") ? (product.sizes.find(x => x.name === size).amount < 4): (product.totalQty < 4 ) }>4</MenuItem>
+              <MenuItem value={5} disabled={(product.sizes != null && size !="") ? (product.sizes.find(x => x.name === size).amount < 5): (product.totalQty < 5 )}>5</MenuItem>
               
             </Select>
           </Stack>
@@ -195,7 +216,7 @@ export function ProductPage() {
           <Button
             variant="contained"
             sx={{ width: 250, mx: "auto", my: 2 }}
-            disabled={product.sizes != null && size == ""}
+            disabled={(product.sizes != null && size == "") || inCart() }
             onClick={() => addToCart()}
           >
             Add To Cart

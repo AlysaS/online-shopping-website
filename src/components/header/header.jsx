@@ -14,7 +14,8 @@ import {
   Toolbar,
   Box,
   AppBar,
-  Badge
+  Badge,
+  Stack
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
@@ -100,18 +101,18 @@ export function Header() {
             
           </Box>
 */}
-<Box sx={{flexGrow:1, textAlign:"left"}}>
+<Stack direction ="row" spacing={3} sx={{flexGrow:1, textAlign:"left"}}>
 
           <Button onClick={() => navigate("/products")} sx={{  my: 2, color: "white", display: "block", fontSize:17, fontWeight:"bold"}}>
                 Products
               </Button>
-</Box>
+
 
           <Button
                 onClick={() => navigate("/orders")}
                 sx={{ my: 2, color: "white", display: "block", fontSize:17, fontWeight:"bold"}}
               >Past Orders</Button>
-             
+</Stack>             
 
 <Box sx={{px:4}}>
   {/* Badge # is hardcoded now but planning to make it match the number of items in the cart*/}

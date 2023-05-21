@@ -27,7 +27,7 @@ export const cartReducer = (state, action) => {
         }
 
         case cartActions.REMOVE_SAVED:{
-            const editedSaveForLater = state.saveForLater.filter(x => (x.id !== action.product.id));
+            const editedSaveForLater = state.saveForLater.filter(x => (x !== action.product));
             return {cart : state.cart, saveForLater: editedSaveForLater}
         }
 
@@ -37,7 +37,7 @@ export const cartReducer = (state, action) => {
 
         case cartActions.SET_QUANTITY:{
             let newCart = cloneDeep(state.cart);
-            const editedItem = newCart.find((x) => x.id === action.item.id);
+            const editedItem = newCart.find((x) => (x.id == action.product.id && x.size == action.product.size));
             editedItem.cartQty= action.qty;
 
             return {cart: newCart, saveForLater:state.saveForLater};
