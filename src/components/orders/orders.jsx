@@ -33,7 +33,8 @@ export function Orders() {
                   padding: 2,
                 }}
               >
-                Order Placed: {order.date.getMonth()}/{order.date.getDate()}/
+                
+                Order Placed: {order.date.getMonth() + 1 /*getMonth returns 0-11*/}/{order.date.getDate()}/
                 {order.date.getFullYear()}
               </Box>
               <Box sx={{ overflowX: "auto", padding: "10px", height: 250 }}>
